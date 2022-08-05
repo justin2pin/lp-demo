@@ -32,11 +32,37 @@
                     "type": "zip"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "dinbror/blazy",
+                "version": "1.8.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/dinbror/blazy/archive/refs/heads/master.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "kenwheeler/slick",
+                "version": "1.8.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/kenwheeler/slick/archive/refs/heads/master.zip",
+                    "type": "zip"
+                }
+            }
         }
     ],
     "require": {
         "composer/installers": "^1.9",
         "dropzone/dropzone": "1.0.0",
+        "dinbror/blazy": "1.8.1",
+        "kenwheeler/slick": "1.8.0",
         "drupal/core-composer-scaffold": "^9.2",
         "drupal/core-dev": "^9.2",
         "drupal/core-recommended": "^9.2",
@@ -100,7 +126,14 @@
     "scripts": {
         "lando-init": [
             "lando start",
-            "lando drush si -y --db-url=mysql://drupal9:drupal9@database:3306/drupal9 --account-mail=justin@atendesigngroup.com --account-pass=admin  --site-name='Drupal 9'"
+            "lando drush si -y --db-url=mysql://drupal9:drupal9@database:3306/drupal9 --account-mail=justin@atendesigngroup.com --account-pass=admin  --site-name='Drupal 9'",
+            "lando drush en -y lp_scaffold",
+            "lando drush en -y lp_demo_content"
+        ],
+        "build-site": [
+            "lando drush si -y --db-url=mysql://drupal9:drupal9@database:3306/drupal9 --account-mail=justin@atendesigngroup.com --account-pass=admin  --site-name='Drupal 9'",
+            "lando drush en -y lp_scaffold",
+            "lando drush en -y lp_demo_content"
         ],
         "lp-permission-config": [
             "lando drush role:create editor",

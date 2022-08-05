@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "51c224d9b2d6113b77b662097b14979d",
+    "content-hash": "37f757b7d76e11d7dfb9bc72c5e2093c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1668,6 +1668,15 @@
                 "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/master"
             },
             "time": "2017-01-20T21:14:22+00:00"
+        },
+        {
+            "name": "dinbror/blazy",
+            "version": "1.8.1",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/dinbror/blazy/archive/refs/heads/master.zip"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "doctrine/annotations",
@@ -4500,10 +4509,11 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:justin2pin/lp_scaffold.git",
-                "reference": "a3efceec275a6274c25a201d0733a1487da6bb6a"
+                "reference": "a214ec2de121c597bdbd76be0fe3beaba9229f8b"
             },
             "require": {
-                "drupal/layout_paragraphs": "^2"
+                "drupal/layout_paragraphs": "^2",
+                "drupal/stories": "^2"
             },
             "default-branch": true,
             "type": "drupal-module",
@@ -4519,7 +4529,7 @@
                 "issues": "https://github.com/justin2pin/lp_scaffold/issues",
                 "source": "https://github.com/justin2pin/lp_scaffold.git"
             },
-            "time": "2022-08-05T18:15:19+00:00"
+            "time": "2022-08-05T19:41:42+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -4590,6 +4600,15 @@
                 "source": "https://github.com/justinrainbow/json-schema/tree/5.2.12"
             },
             "time": "2022-04-13T08:02:27+00:00"
+        },
+        {
+            "name": "kenwheeler/slick",
+            "version": "1.8.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/kenwheeler/slick/archive/refs/heads/master.zip"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "laminas/laminas-diactoros",
