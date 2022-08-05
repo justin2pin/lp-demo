@@ -1,0 +1,110 @@
+{
+    "name": "justin2pin/drupal9-starter",
+    "description": "Drupal 9 starter composer project",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.drupal.org/project/drupal",
+    "support": {
+        "docs": "https://www.drupal.org/docs/user_guide/en/index.html",
+        "chat": "https://www.drupal.org/node/314178"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+           "type": "git",
+            "url": "git@github.com:justin2pin/lp_scaffold.git"
+        },
+        {
+           "type": "git",
+            "url": "git@github.com:justin2pin/lp_demo_content.git"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "dropzone/dropzone",
+                "version": "1.0.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/dropzone/dropzone/archive/refs/heads/master.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.9",
+        "dropzone/dropzone": "1.0.0",
+        "drupal/core-composer-scaffold": "^9.2",
+        "drupal/core-dev": "^9.2",
+        "drupal/core-recommended": "^9.2",
+        "drupal/layout_paragraphs": "2.0.x-dev",
+        "drupal/stories": "2.x-dev@dev",
+        "drush/drush": "^10.6",
+        "justin2pin/lp_demo_content": "dev-main",
+        "justin2pin/lp_scaffold": "dev-main"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "drupal/core-composer-scaffold": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            }
+        },
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/profiles/custom/{$name}": [
+                "type:drupal-custom-profile"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
+        }
+    },
+    "scripts": {
+        "lando-init": [
+            "lando start",
+            "lando drush si -y --db-url=mysql://drupal9:drupal9@database:3306/drupal9 --account-mail=justin@atendesigngroup.com --account-pass=admin  --site-name='Drupal 9'"
+        ],
+        "lp-permission-config": [
+            "lando drush role:create editor",
+            "lando drush role:perm:add editor 'access stories_image_uploader entity browser pages,create image media,create page content,create paragraph content section,create paragraph content stories_image,create paragraph content stories_text,delete own page content,delete paragraph content stories_text,edit any page content,edit own page content,reorder layout paragraphs components,update paragraph content section,update paragraph content stories_text,view paragraph content section,view paragraph content stories_image,view paragraph content stories_text'",
+            "lando druse user:create editor --password='password' --mail='justin+editor@atendesigngroup.com'",
+            "lando drush user:add:role 'editor' editor"
+        ]
+    }
+}

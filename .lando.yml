@@ -1,0 +1,26 @@
+# Replace .lando.yml with contents of this file if you need automated JS tests.
+name: lp-demo
+recipe: drupal9
+services:
+  appserver:
+    webroot: web
+    xdebug: true
+    overrides:
+      environment:
+        # Change this to your local website URL.
+        SIMPLETEST_BASE_URL: "http://lp-demo.lndo.site"
+        # Format is driver://username:password@host/databasename#table_prefix
+        SIMPLETEST_DB: "mysql://drupal9:drupal9@database/drupal9#simpletest"
+        BROWSERTEST_OUTPUT_DIRECTORY: "web/sites/simpletest/browser_output"
+        MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","chromeOptions":{"args":["--disable-gpu","--headless","--no-sandbox","--disable-dev-shm-usage"]}}, "http://chrome:3000/webdriver"]'
+  chrome:
+    type: compose
+    ports:
+      - 3000:3000
+    services:
+      image: browserless/chrome
+      command: /usr/src/app/start.sh
+tooling:
+ test:
+   service: appserver
+   cmd: "php /app/vendor/bin/phpunit --verbose -c /app/phpunit.xml"
